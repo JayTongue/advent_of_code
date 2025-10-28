@@ -1,0 +1,20 @@
+import re
+from collections import Counter
+from helpers.timer_func import timer
+
+@timer
+def main():
+	data = open('data/4.txt', 'r').read().split('\n')
+	cards = [[list(j for j in i.split(' ') if j) for i in re.split(r':|\|', line)] for line in data]
+	cards = {int(card[0][1]): (frozenset(map(int, card[1])), frozenset(map(int, card[2]))) for card in list(cards)}
+	counter = Counter()
+	for card in cards:
+		counter[card] += 1 # adds itself
+		winning, have = cards[card]
+		matches = len(winning & have)
+		for i in range(1, matches + 1):
+			counter[card + i] += 1 * counter[card]
+	print(f'Total Number of Cards: {sum(counter.values())}')
+	
+if __name__ == '__main__':
+	main()
