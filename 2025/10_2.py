@@ -11,9 +11,7 @@ data = list(zip(lights, buttons, joltage))
 sol = 0
 
 for lights, buttons, joltage in data:
-    n_buttons = len(buttons)
-    n_lights = len(joltage)
-
+    n_buttons = len(buttons) ; n_lights = len(joltage)
     butt_arr = [[0] * n_buttons for _ in range(n_lights)]
     for b_idx, b in enumerate(buttons):
         for light_idx in b:
