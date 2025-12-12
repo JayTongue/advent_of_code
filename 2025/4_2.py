@@ -32,5 +32,4 @@ while removable > 0:
     for row_count, col_count in changes:
         data[row_count][col_count] = '.'
 
-    print(f'round: {round_counter}, {removable} removed')
 print(total_removed)

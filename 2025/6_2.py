@@ -24,7 +24,6 @@ for cycle_count, limits in enumerate(ranged_idxs):
 
     total_col = []
     for pos in range(max([len(n) for n in problem])):
-        print(pos, limits, problem)
         col = int(''.join([p[pos] for p in problem if p[pos] != ' ']))
         total_col.append(col)
     op = operators[cycle_count]

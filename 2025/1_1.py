@@ -17,4 +17,4 @@ for turn in data:
     if start_point == 0:
         zero_count += 1
 
-print(f'solution: {zero_count}')
+print(zero_count)

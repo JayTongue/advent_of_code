@@ -21,10 +21,8 @@ connections = 10
 for count, edge in zip(range(connections), sorted_edges):
     abox, bbox, weight = edge
     weight = weight['weight']
-    print(count, abox, bbox, weight)
     G2.add_node(abox) ; G2.add_node(bbox)
     G2.add_edge(abox, bbox)
-print(nx.to_dict_of_dicts(G2))
 
 components = sorted(list(nx.connected_components(G2)), key=len, reverse=True)
 print(prod(sorted([len(i) for i in components], reverse=True)[:3]))

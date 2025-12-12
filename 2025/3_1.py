@@ -4,7 +4,6 @@ with open('2025/data/3.txt', 'r') as infile:
 total = 0
 for bank in data:
     bank = [int(i) for i in list(bank)]
-    print(bank)
     one_val, one_idx = max(bank), bank.index(max(bank))
     
     if one_idx != len(bank)-1:
