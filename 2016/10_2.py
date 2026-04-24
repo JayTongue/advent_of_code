@@ -29,7 +29,6 @@ def find_outputs(outputs, bots):
     while outputs:
         for output in outputs:
             bot, out, high = tuple(map(int, re.findall(r'\d+', output)))
-            # if len(bots[bot]) == 2:
             out_dict[out].add(min(bots[bot])) ; bots[high].add(max(bots[bot]))
             bots[bot] = set()
             outputs.remove(output)
