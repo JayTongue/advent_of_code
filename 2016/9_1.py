@@ -8,7 +8,7 @@ def line_walk(line):
     result = []
     while i < len(line):
         if line[i] == '(':
-            end = line.index(')', i)
+            end = line.index(')', i) # (find, start, stop)
             length, times = map(int, line[i+1:end].split('x'))
             chunk = line[end+1 : end+1+length]
             result.append(chunk * times)
