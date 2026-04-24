@@ -22,7 +22,6 @@ def find_trades(trades, bots):
                 bots[low].add(min(bots[bot])) ; bots[high].add(max(bots[bot]))
                 bots[bot] = set()
                 trades.remove(trade)
-        print('trade_pool:', len(trades))
     return bots
 
 
@@ -30,10 +29,10 @@ def find_outputs(outputs, bots):
     while outputs:
         for output in outputs:
             bot, out, high = tuple(map(int, re.findall(r'\d+', output)))
-            if len(bots[bot]) == 2:
-                out_dict[out].add(min(bots[bot])) ; bots[high].add(max(bots[bot]))
-                bots[bot] = set()
-                outputs.remove(output)
+            # if len(bots[bot]) == 2:
+            out_dict[out].add(min(bots[bot])) ; bots[high].add(max(bots[bot]))
+            bots[bot] = set()
+            outputs.remove(output)
     return prod(map(sum, (out_dict[0], out_dict[1], out_dict[2])))
     
 print(find_outputs(outputs, find_trades(trades, bots)))
