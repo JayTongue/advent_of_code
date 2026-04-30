@@ -2,7 +2,8 @@ with open('2016/data/18.txt', 'r') as infile:
     old_row = [False if i == '.' else True for i in list(infile.read())]
 
 def next_row(old_row):
-    new_row = [is_trap(i, old_row) for i in range(len(old_row))]
+    # new_row = [is_trap(i, old_row) for i in range(len(old_row))]
+    new_row = list(map(lambda x: is_trap(x, old_row), range(len(old_row))))
     return new_row
 
 def is_trap(i, row):
