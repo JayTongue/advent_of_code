@@ -34,7 +34,7 @@ int twos_and_threes(char **boxes, int box_count) {
                return total_twos * total_threes;
                }
                ''')
-# ffi.compile(tmpdir=cffi_dir, verbose=True)
+ffi.compile(tmpdir=cffi_dir, verbose=True)
 
 from _2_1 import lib
 
