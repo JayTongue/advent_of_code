@@ -68,7 +68,6 @@ results move_step(int point_len, int *xs, int *ys, int *vel_x, int *vel_y) {
         long long new_dim = find_dim(ys, xs, point_len);
         
         if (new_dim > old_dim) {
-            printf("%d\\n", counter);
             results out;
             out.prev_x = prev_x;
             out.prev_y = prev_y;
