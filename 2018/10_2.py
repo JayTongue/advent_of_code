@@ -42,22 +42,11 @@ long long find_dim(int *ys, int *xs, int len) {
     long long width = max_x - min_x;
     long long length = max_y - min_y;
     return width * length;               
-}
-
-void copy_arr(int *a, int *b, int len) {
-    for (int i=0; i < len; i++) {
-        b[i] = a[i]; 
-    }              
-}            
+}        
 
 results move_step(int point_len, int *xs, int *ys, int *vel_x, int *vel_y) {
     long long old_dim = find_dim(ys, xs, point_len);
-    int *prev_x = malloc(point_len * sizeof(*prev_x));
-    int *prev_y = malloc(point_len * sizeof(*prev_y));
     int counter = 0;
-    
-    copy_arr(xs, prev_x, point_len);
-    copy_arr(ys, prev_y, point_len);
                
     while (1){
         for (int idx = 0; idx < point_len; idx++) {
@@ -69,15 +58,19 @@ results move_step(int point_len, int *xs, int *ys, int *vel_x, int *vel_y) {
         
         if (new_dim > old_dim) {
             printf("%d\\n", counter);
+               
+            for (int idx = 0; idx < point_len; idx++) {
+                xs[idx] -= vel_x[idx];
+                ys[idx] -= vel_y[idx];
+            }
+               
             results out;
-            out.prev_x = prev_x;
-            out.prev_y = prev_y;
+            out.prev_x = xs;
+            out.prev_y = ys;
             return out;
             
         } else {
             old_dim = new_dim;
-            copy_arr(xs, prev_x, point_len);
-            copy_arr(ys, prev_y, point_len);
             counter += 1;       
         }
     }           
